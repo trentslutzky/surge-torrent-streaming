@@ -1,0 +1,25 @@
+{
+  "name": "surge-torrent-client",
+  "version": "0.1.0",
+  "private": false,
+  "main": "main.js",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "concurrently": "^6.5.1",
+    "electron": "^16.0.5",
+    "electron-is-dev": "^2.0.0",
+    "grommet": "^2.19.1",
+    "grommet-icons": "^4.7.0",
+    "react": "^17.0.2",
+    "react-animista": "^1.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "5.0.0",
+    "styled-components": "^5.3.3",
+    "wait-on": "^6.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "dev": "concurrently -k \"BROWSER=none yarn start\" \"yarn electron .\""
+  }
+}
