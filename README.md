@@ -26,7 +26,7 @@ $ webtorrent <magnet link> --mpv
 - [MPV](https://mpv.io/)
 
 
-If you want to use Surge, there is a Linux Appimage in the releases. Or you can clone this repo and do whatever with it.
+If you want to use Surge, there is a Linux Appimage in [releases](https://github.com/trentslutzky/surge-torrent-streaming/releases). Or you can clone this repo and do whatever with it.
 
 
 ## Find a torrent in seconds:
