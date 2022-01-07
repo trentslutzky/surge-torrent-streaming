@@ -1,4 +1,6 @@
 <h1 align="center">
+  <br>
+  <br>
   <img src="https://github.com/trentslutzky/surge-torrent-streaming/blob/main/repo/logo.png" alt="SURGE" width="450">
 </h1>
 
