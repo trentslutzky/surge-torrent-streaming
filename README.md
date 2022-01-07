@@ -15,7 +15,7 @@
 1. When you search, Surge scrapes [1337x](https://1337x.wtf/) for magnet links matching your search query.
 2. When you select a torrent, Surge uses node ```child_process``` to start the webtorrent stream in the background, and send the stream to MPV.
 
-Therefore, surge is a really complicated way of running
+Therefore, surge is an extremelyn bloated, overkill way of running
 ```
 $ webtorrent <magnet link> --mpv
 ```
