@@ -34,4 +34,6 @@ If you want to use Surge, there is a Linux Appimage in [releases](https://github
 
 
 ## todo
+- Add support for other video players (VLC)
+- Add support for scraping other trackers (RARBG, rutracker, etc.)
 - Electron makes the app *huge*. Maybe switch to [Tauri](https://github.com/tauri-apps/tauri)
