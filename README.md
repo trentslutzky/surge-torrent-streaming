@@ -28,3 +28,7 @@ $ webtorrent <magnet link> --mpv
 
 ## Find a torrent in seconds:
 <img src="https://github.com/trentslutzky/surge-torrent-streaming/blob/main/repo/demo.gif" width="600">
+
+
+## todo
+- Electron makes the app *huge*. Maybe switch to [Tauri](https://github.com/tauri-apps/tauri)
