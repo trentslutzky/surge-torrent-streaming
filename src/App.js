@@ -25,6 +25,7 @@ export default function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searching, setSearching] = useState(false);
   const [searchResults, setSearchResults] = useState(null);
+  const [splashing, setSplashing] = useState(true);
   const [ready, setReady] = useState(false);
   const [input, setInput] = useState(null);
 
@@ -35,7 +36,22 @@ export default function App() {
 
   const [magnet, setMagnet] = useState(null);
   const [streamLoadText, setStreamLoadText] = useState('Loading');
-  //const [streamError, setStreamError] = useState('Error: no space left on device');
+
+  async function handleSplashScreen(){
+    if(splashing){
+      document.getElementById('animation-box').style.height = "40%";
+      document.getElementById('main-title').style.fontSize = "20vh";
+      await delay(2000)
+      document.getElementById('animation-box').style.height = "100%";
+      document.getElementById('main-title').style.fontSize = "10vh";
+      await delay(1000)
+      setSplashing(false)
+    }
+  }
+
+  useEffect(()=>{
+    handleSplashScreen()
+  },[])
 
   function handleSearchTerm(e){
     setSelected(-1)
@@ -79,10 +95,12 @@ export default function App() {
     })
 
     stream_process.on('close',()=>{
+      setShowStream(false)
       setMagnet(null)
       setSearchResults(null)
       setSearchTerm('')
-      setShowStream(false)
+      document.getElementById('main-title').style.fontSize = "10vh";
+      document.getElementById('animation-box').style.height = "100%";
     })
 
   }
@@ -187,11 +205,14 @@ export default function App() {
           duration:2000,
         }}
       >
-        <Box width="100%" direction="column" align="center">
-          <Title size="10vh" color="#123456" margin="none"
+        <Box width="100%" height="100%" fill direction="row" align="center">
+        <AnimateHeightBox width="100%" direction="column" align="center" id="animation-box">
+          <AnimTitle size="10vh" color="#123456" margin="none" id="main-title"
           >
             surge
-          </Title>
+          </AnimTitle>
+          {splashing == false&&
+          <Box width="100%" direction="column" align="center" animation="fadeIn">
           <Text margin="none" size="2vh">
             Search for a movie or show
           </Text>
@@ -233,6 +254,9 @@ export default function App() {
             }
             </div>
           }
+          </Box>
+        }
+        </AnimateHeightBox>
         </Box>
       </Box>
     </BigGrommet>
@@ -379,4 +403,13 @@ const MonoText = styled(Text)`
 
 const IndicatorBox = styled(Box)`
   overflow:visible;
+`;
+
+const AnimateHeightBox = styled(Box)`
+  transition:all 1.5s;
+`;
+
+const AnimTitle = styled(Heading)`
+  transition:all 1.5s;
+  font-size:15vh;
 `;

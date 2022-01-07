@@ -2,24 +2,64 @@
   "name": "surge-torrent-client",
   "version": "0.1.0",
   "private": false,
-  "main": "main.js",
+  "main": "public/main.js",
+  "homepage": "./",
+  "author": "TrentLS",
+  "description": "Electron webtorrent client",
   "dependencies": {
+    "axios": "^0.24.0",
     "child_process": "^1.0.2",
-    "concurrently": "^6.5.1",
-    "electron": "^16.0.5",
     "electron-is-dev": "^2.0.0",
     "grommet": "^2.19.1",
-    "grommet-icons": "^4.7.0",
     "react": "^17.0.2",
     "react-animista": "^1.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "5.0.0",
     "styled-components": "^5.3.3",
-    "wait-on": "^6.0.0"
+    "update-electron-app": "^2.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=3303 react-scripts start",
     "build": "react-scripts build",
-    "dev": "concurrently -k \"BROWSER=none yarn start\" \"yarn electron .\""
+    "dev": "concurrently -k \"BROWSER=none yarn start\" \"wait-on http://localhost:3303/ yarn electron .\"",
+    "electron:package:linux": "yarn build && electron-builder -l -c.extraMetadata.main=build/main.js"
+  },
+  "build": {
+    "extends": null,
+    "appId": "com.trentls.surge",
+    "productName": "SurgeTorrentClient",
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "publish": [
+        "github"
+      ]
+    },
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^6.5.1",
+    "electron": "^16.0.5",
+    "electron-builder": "^22.14.5",
+    "react-scripts": "^5.0.0",
+    "wait-on": "^6.0.0"
   }
 }

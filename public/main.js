@@ -1,3 +1,4 @@
+const path = require('path');
 const { app, BrowserWindow, ipcMain } = require('electron');
 const { exec } = require('child_process');
 const isDev = require('electron-is-dev');
@@ -21,15 +22,14 @@ function createWindow() {
       backgroundThrottling: false,
       nodeIntegration: true,
       enableRemoteModule: true,
-      contextIsolation: false,
-      plugins:true,
+      contextIsolation: false
     }
   })
 
   mainWindow.loadURL(
       isDev
-          ? 'http://localhost:3000'
-          : `file://${path.join(__dirname, '../build/index.html')}`
+          ? 'http://localhost:3303'
+          : `file://${path.join(__dirname, './index.html')}`
   );
 
   mainWindow.once('ready-to-show', () => {
@@ -38,10 +38,6 @@ function createWindow() {
 
   mainWindow.webContents.on('before-input-event',(event,input)=>{
     mainWindow.webContents.send('window_input',input)
-  })
-
-  mainWindow.webContents.on('did-finish-load',()=>{
-    log.info('loaded')
   })
 }
 
