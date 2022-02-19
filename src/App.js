@@ -85,7 +85,7 @@ export default function App() {
   async function handleShowStream(magnet_link){
     setStreamLoading(true)
 
-    const stream_process = spawn('webtorrent', [magnet_link,'--mpv'])
+    const stream_process = spawn('webtorrent', [magnet_link,'--mpv','-o','/STORAGE/torrent-downloads'])
     stream_process.stdout.setEncoding('utf8');
 
     await delay(100)

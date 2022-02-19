@@ -9,14 +9,12 @@ let mainWindow
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 820,
-    height: 1200,
+    width: 1920,
+    height: 1080,
+    fullscreen:true,
     show: true,
     frame: false,
-    title: 'Tesla Companion',
-    fullscreenable: false,
-    resizable: false,
-    transparent: false,
+    title: 'Surge-Torrent-Client',
     titleBarStyle: 'customButtonsOnHover',
     webPreferences: {
       backgroundThrottling: false,
